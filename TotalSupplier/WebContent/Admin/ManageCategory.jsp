@@ -55,7 +55,12 @@
 				        <tbody>
 				        <%
 								SessionFactory factory= HibernateUtil.getSessionFactory();
-								Session sessionHb=factory.openSession();
+				        		Session sessionHb = null;       
+				        		try {         
+				            		sessionHb = factory.openSession();  
+				        		} catch (org.hibernate.HibernateException he) {  
+				            		sessionHb = factory.getCurrentSession();     
+				        		}             
 								Query query=sessionHb.createQuery("from Category where status=1");
 								List<Category> list=query.list();
 								Iterator<Category> itr=list.iterator();
@@ -73,8 +78,8 @@
 					                			else
 					                				out.print("Unpublished");
 					                		%></td>
-					                		<td></td>
-					                		<td></td>
+					                		<td><a href="EditCategory?category_id=<%out.print(category.getCategoryId());%>"><img alt="Edit" src="images/home/edit.png"></a></td>
+					                		<td><a href="DeleteCategory?category_id=<%out.print(category.getCategoryId());%>"><img alt="Delete" src="images/home/delete.png"></a></td>
 				            			</tr>		
 									<% 
 								}
