@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,6 +37,8 @@ public class AddCategory extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		RequestDispatcher dispatcher=request.getRequestDispatcher("ManageCategory.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -62,8 +65,7 @@ public class AddCategory extends HttpServlet {
 		session.persist(category);
 		transaction.commit();
 		session.close();
-		factory.close();
-		
+		doGet(request, response);
 	}
 
 }

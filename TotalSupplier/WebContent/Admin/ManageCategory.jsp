@@ -61,7 +61,7 @@
 				        		} catch (org.hibernate.HibernateException he) {  
 				            		sessionHb = factory.getCurrentSession();     
 				        		}             
-								Query query=sessionHb.createQuery("from Category where status=1");
+								Query query=sessionHb.createQuery("from Category");
 								List<Category> list=query.list();
 								Iterator<Category> itr=list.iterator();
 								while(itr.hasNext())
