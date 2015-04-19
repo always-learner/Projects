@@ -42,7 +42,7 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>Add Main category</h2>
-						<form action="AddCategory" method="post" class="form-group">
+						<form action="UpadetCategory" method="post" class="form-group">
 						
 						<%
 						SessionFactory factory=HibernateUtil.getSessionFactory();
@@ -57,7 +57,8 @@
 						Category category=categories.get(0);
 						%>
 							<label for="usr">Category ID:</label>
-							<input type="text" class="form-control" placeholder="Category id" name="category_id" disabled="disabled" value="<%out.print(category.getCategoryId());%>"/>
+							<input type="hidden" value="<%out.print(request.getParameter("category_id"));%>" name="category_id"> 
+							<input type="text" class="form-control" placeholder="Category id" name="category_id_demo" disabled="disabled" value="<%out.print(request.getParameter("category_id"));%>"/>
 							<label for="usr">Category Name:</label>
 							<input type="text" class="form-control" placeholder="Category name" name="category_name" value="<%out.print(category.getName());%>"/>
 							<label for="usr">Category Description:</label>

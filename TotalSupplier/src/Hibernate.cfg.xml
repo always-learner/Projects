@@ -13,5 +13,6 @@
 <property name="hibernate.hbm2ddl.auto">update</property>
 <mapping class="model.Admin"/>
 <mapping class="model.Category"/>
+<mapping class="model.Product"/>
 </session-factory>
 </hibernate-configuration>
